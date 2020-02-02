@@ -1,0 +1,84 @@
+//                        This program makes a simple game where the computer wins everytime unless you can find the ideal stategy//
+
+
+
+
+
+
+//                                                             Welcome to the game of NIM                                         //
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int startingNum;
+	int playerMove;
+	int n = 0;
+	//Rules of the game//
+	cout << "                         Goal of the game is to get to zero or a negative number fastest" << endl << endl;
+	cout << "                                        You may only subtract by 1 or 2" << endl << endl;
+	cout << "                                         If you cheat you lose a turn" << endl << endl;
+	cout << "                                  We go turn by turn until the goal is achieved" << endl << endl;
+	cout << "                                   I'll be nice and let you pick where we start" << endl << endl;
+	
+	//getting starting number//
+	cout << "Starting Number: ";
+	cin >> startingNum;
+	
+	//printing out starting number//
+	cout << startingNum << endl;
+
+	while (n%2 == 0)
+	{
+		//Computer Oppenent//
+		if (startingNum % 3 == 2)
+		{
+			startingNum = startingNum - 2;
+			cout << "I subtract by 2" << endl << endl << "The number is now: " << startingNum << endl << endl;
+			if (startingNum <= 0)
+			{
+				cout << "                                                    I win" << endl;
+				break;
+			}
+		}
+		else
+		{
+			startingNum--;
+			cout << "I subtract by 1" << endl << endl << "The number is now: " << startingNum << endl << endl; 
+			if (startingNum <= 0)
+			{
+				cout << "                                                    I win" << endl;
+				break;
+			}
+		}
+		n++;
+		
+		//User turn//
+		cout << "Your move" << endl << endl << "You subtract by: ";
+		cin >> playerMove;
+		
+		while (n%2 == 1)
+		if ((playerMove > 0) && (playerMove < 3))
+		{
+			startingNum = startingNum - playerMove;
+			if (startingNum <= 0)
+			{
+				cout << "                                                    You win" << endl;
+				return 0;
+			}
+			else
+			{
+				cout << "The number is now: " << startingNum << endl << endl;
+				break;
+			}
+		}
+		else
+		{
+			cout << "Only the numbers 1 or 2...you sneaky" << endl;
+			break;
+		}
+		n++;
+	}
+	return 0;
+}
